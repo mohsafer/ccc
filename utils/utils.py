@@ -9,6 +9,23 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 
+def load_dataset(dataset_path, sub_path):
+    """
+    Load dataset from the specified path and subdirectory.
+
+    Args:
+        dataset_path (str): Base path to the dataset directory.
+        sub_path (str): Subdirectory name ('safe' or 'malware').
+
+    Returns:
+        x (np.ndarray): Feature data.
+        y (np.ndarray): Labels.
+    """
+    import os
+    import numpy as np
+    import pandas as pd
+
+    # Construct the full path
     dir_path = os.path.join(dataset_path, sub_path)
     print(f"Accessing: {dir_path}")  # Debugging
 
