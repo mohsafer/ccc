@@ -102,3 +102,25 @@ def plot(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
 
+def plotmix(history):
+    # Extract data from history
+    train_loss = history.history['loss']
+    val_loss = history.history['val_loss']
+    train_acc = history.history['accuracy']
+    val_acc = history.history['val_accuracy']
+    epochs = range(1, len(train_loss) + 1)
+
+    # Plot training and validation loss
+    plt.plot(epochs, val_loss, label='Val Loss', color='blue')
+    plt.plot(epochs, train_loss, label='Train Loss', color='green')
+    
+    # Plot training and validation accuracy
+    plt.plot(epochs, val_acc, label='Val Acc', color='orange')
+    plt.plot(epochs, train_acc, label='Train Acc', color='red')
+    
+    # Add labels, legend, and title
+    plt.xlabel('Epoch')
+    plt.ylabel('Value')
+    plt.legend()
+    plt.ylim(0, 1)  # Adjust the y-axis limits if necessary
+    plt.show()
