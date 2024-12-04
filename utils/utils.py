@@ -81,7 +81,7 @@ def create_directory(directory_path):
             return None
         return directory_path
 
-    
+
 def plot(history):
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
@@ -101,7 +101,7 @@ def plot(history):
     plt.xlabel('epoch')
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
-
+    
 def plotmix(history):
     # Extract data from history
     train_loss = history.history['loss']
