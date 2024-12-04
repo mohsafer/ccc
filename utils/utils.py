@@ -9,22 +9,26 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 
-def load_dataset(dataset_path, sub_path):
-    path = os.path.join(dataset_path, sub_path)  # Use os.path.join for proper path handling
-    if not os.path.exists(path):  # Check if the directory exists
-        raise FileNotFoundError(f"The directory '{path}' does not exist.")
-    
+    dir_path = os.path.join(dataset_path, sub_path)
+    print(f"Accessing: {dir_path}")  # Debugging
+
+    # Check if the directory exists
+    if not os.path.exists(dir_path):
+        raise FileNotFoundError(f"Directory not found: {dir_path}")
+
+    # Initialize data arrays
     x = np.array([]).reshape(0, 60, 23)
     y = np.array([]).reshape(0, 1)
-    files = os.listdir(path)  # List files in the directory
-    for file in files:
-        file_path = os.path.join(path, file)  # Construct full file path
-        df = pd.read_csv(file_path).to_numpy()  # Read and convert CSV to numpy
+
+    # Load files
+    for file in os.listdir(dir_path):
+        file_path = os.path.join(dir_path, file)
+        print(f"Processing file: {file_path}")  # Debugging
+        df = pd.read_csv(file_path).to_numpy()
         x = np.append(x, df.reshape(1, 60, 23), axis=0)
-        if sub_path == "malware":  # Correct sub_path comparison
-            y = np.append(y, [[1]], axis=0)
-        else:
-            y = np.append(y, [[0]], axis=0)
+        label = 1 if sub_path == "malware" else 0
+        y = np.append(y, [[label]], axis=0)
+
     return x, y
 
 
