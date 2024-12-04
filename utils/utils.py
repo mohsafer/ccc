@@ -47,8 +47,8 @@ def data_normalization(data, standard=True):
 
 
 def load_data(path, ratio, norm=False):
-    x_safe, y_safe = load_dataset(path, "\safe")
-    x_mal, y_mal = load_dataset(path, "\malware")
+    x_safe, y_safe = load_dataset(path, "safe")
+    x_mal, y_mal = load_dataset(path, "malware")
     x = np.concatenate((data_normalization(x_safe, False), data_normalization(x_mal, False)), axis=0)
     y = np.concatenate((y_safe, y_mal), axis=0)
     x, y = shuffle(x, y)
