@@ -102,7 +102,7 @@ def plot(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
     
-def plotmix(history):
+def mix(history):
     # Extract data from history
     train_loss = history.history['loss']
     val_loss = history.history['val_loss']
