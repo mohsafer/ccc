@@ -103,7 +103,8 @@ def plot(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
     """
-def plot(history, model):
+    #def plot(history, model):
+def plot(history, model, y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
     # Extract data from history
     train_loss = history.history['loss']
     val_loss = history.history['val_loss']
@@ -127,3 +128,7 @@ def plot(history, model):
     plt.show()
 
     model.summary()
+
+    res = calculate_metrics(y_true, y_pred, duration, y_true_val, y_pred_val)
+    print("Metrics:")
+    print(res)
