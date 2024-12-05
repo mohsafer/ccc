@@ -58,18 +58,40 @@ def load_data(path, ratio, norm=False):
     return X_train, X_test, X_val, y_train, y_test, y_val
 
 
+# def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
+#     res = pd.DataFrame(data=np.zeros((1, 4), dtype=float), index=[0], # np.float to float
+#                        columns=['precision', 'accuracy', 'recall', 'duration'])
+#     res['precision'] = precision_score(y_true, y_pred, average='macro')
+#     res['accuracy'] = accuracy_score(y_true, y_pred)
+
+#     if not y_true_val is None:
+#         res['accuracy_val'] = accuracy_score(y_true_val, y_pred_val)
+
+#     res['recall'] = recall_score(y_true, y_pred, average='macro')
+#     res['duration'] = duration
+#     return res
+
+from sklearn.metrics import precision_score, accuracy_score, recall_score
+import pandas as pd
+import numpy as np
+
 def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
-    res = pd.DataFrame(data=np.zeros((1, 4), dtype=float), index=[0], # np.float to float
-                       columns=['precision', 'accuracy', 'recall', 'duration'])
+    # Initialize the results DataFrame
+    res = pd.DataFrame(data=np.zeros((1, 5), dtype=float), 
+                       columns=['precision', 'accuracy', 'recall', 'duration', 'accuracy_val'])
+
+    # Compute metrics
     res['precision'] = precision_score(y_true, y_pred, average='macro')
     res['accuracy'] = accuracy_score(y_true, y_pred)
-
-    if not y_true_val is None:
-        res['accuracy_val'] = accuracy_score(y_true_val, y_pred_val)
-
     res['recall'] = recall_score(y_true, y_pred, average='macro')
     res['duration'] = duration
+
+    # Validation accuracy (if available)
+    if y_true_val is not None and y_pred_val is not None:
+        res['accuracy_val'] = accuracy_score(y_true_val, y_pred_val)
+
     return res
+
 
 
 def create_directory(directory_path):
