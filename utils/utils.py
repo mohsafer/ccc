@@ -30,8 +30,8 @@ def load_dataset(dataset_path, sub_path):
         file_path = os.path.join(dir_path, file)
         print(f"Processing file: {file_path}")  # Debugging
         df = pd.read_csv(file_path).to_numpy()
-        #x = np.append(x, df.reshape(1, 60, 23), axis=0)
-        X = np.append(X, df.reshape(1, 60, 23), axis=0)
+        x = np.append(x, df.reshape(1, 60, 23), axis=0)
+        #X = np.append(X, df.reshape(1, 60, 23), axis=0)
         label = 1 if sub_path == "malware" else 0
         y = np.append(y, [[label]], axis=0)
 
