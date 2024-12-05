@@ -144,7 +144,7 @@ class Classifier_TLENET:
         if not tf.test.is_gpu_available:
             print('error')
             exit()
-        nb_epochs = 1000
+        nb_epochs = 100
         batch_size= 256
         nb_classes = y_train.shape[1]
 
