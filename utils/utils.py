@@ -30,7 +30,8 @@ def load_dataset(dataset_path, sub_path):
         file_path = os.path.join(dir_path, file)
         print(f"Processing file: {file_path}")  # Debugging
         df = pd.read_csv(file_path).to_numpy()
-        x = np.append(x, df.reshape(1, 60, 23), axis=0)
+        #x = np.append(x, df.reshape(1, 60, 23), axis=0)
+        X = np.append(X, df.reshape(1, 60, 23), axis=0)
         label = 1 if sub_path == "malware" else 0
         y = np.append(y, [[label]], axis=0)
 
@@ -50,12 +51,13 @@ def data_normalization(data, standard=True):
 def load_data(path, ratio, norm=False):
     x_safe, y_safe = load_dataset(path, "safe")
     x_mal, y_mal = load_dataset(path, "malware")
-    x = np.concatenate((data_normalization(x_safe, False), data_normalization(x_mal, False)), axis=0)
+    X = np.concatenate((data_normalization(x_safe, False), data_normalization(x_mal, False)), axis=0)
     y = np.concatenate((y_safe, y_mal), axis=0)
-    x, y = shuffle(x, y)
+    X, y = shuffle(x, y)
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=ratio[1], random_state=8)
     X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=ratio[2]/(1. - ratio[1]), random_state=9)
-    return X_train, X_test, X_val, y_train, y_test, y_val
+    # return X_train, x_test, X_val, y_train, y_test, y_val
+    return X_train, X_test, X_val, y_train, y_test, y_va
 
 
 # def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
