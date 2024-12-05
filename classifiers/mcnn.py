@@ -458,8 +458,7 @@ class Classifier_MCNN:
 
         model = keras.models.Model(inputs=input_layers, outputs=output_layer)
 
-        model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adam(lr=0.1),
-            metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         
         return model 
 
