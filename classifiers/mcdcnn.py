@@ -32,7 +32,7 @@ class MCDCNN:
         x = self.connected(x)
         out = self.classifier(x)
         model = Model(inputs=inputs, outputs=out)
-        model.compile(loss='categorical_crossentropy', optimizer=SGD, metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
         #model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
     
