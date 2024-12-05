@@ -71,7 +71,8 @@ class Classifier_TLENET:
         
         model = keras.models.Model(inputs=input_layer,outputs=output_layer)
         
-        model.compile(optimizer=keras.optimizers.Adam,loss='categorical_crossentropy', metrics=['accuracy'])
+        #model.compile(optimizer=keras.optimizers.Adam,loss='categorical_crossentropy', metrics=['accuracy'])
+        model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         
         file_path = self.output_directory+'best_model.hdf5'
 
