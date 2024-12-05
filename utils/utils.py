@@ -113,7 +113,7 @@ def plot(history, model):
     epochs = range(1, len(train_loss) + 1)
 
     # Plot training and validation loss
-   plt.plot(epochs, val_loss, label='Val Loss', color='blue')
+    plt.plot(epochs, val_loss, label='Val Loss', color='blue')
     plt.plot(epochs, train_loss, label='Train Loss', color='green')
     
     # Plot training and validation accuracy
