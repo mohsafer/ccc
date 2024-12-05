@@ -51,13 +51,12 @@ def data_normalization(data, standard=True):
 def load_data(path, ratio, norm=False):
     x_safe, y_safe = load_dataset(path, "safe")
     x_mal, y_mal = load_dataset(path, "malware")
-    X = np.concatenate((data_normalization(x_safe, False), data_normalization(x_mal, False)), axis=0)
+    x = np.concatenate((data_normalization(x_safe, False), data_normalization(x_mal, False)), axis=0)
     y = np.concatenate((y_safe, y_mal), axis=0)
-    X, y = shuffle(x, y)
+    x, y = shuffle(x, y)
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=ratio[1], random_state=8)
     X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=ratio[2]/(1. - ratio[1]), random_state=9)
-    # return X_train, x_test, X_val, y_train, y_test, y_val
-    return X_train, X_test, X_val, y_train, y_test, y_va
+    return X_train, X_test, X_val, y_train, y_test, y_val
 
 
 # def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
