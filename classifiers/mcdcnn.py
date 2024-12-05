@@ -1,7 +1,7 @@
 # Multi Channel-Deep Convolutional Neural Network
 from tensorflow.keras.layers import Input, Dense, Concatenate, Conv1D, MaxPooling1D, Flatten
 from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import SGD
 
 class MCDCNN:
     def __init__(self, input_shape, num_classes):
@@ -32,8 +32,8 @@ class MCDCNN:
         x = self.connected(x)
         out = self.classifier(x)
         model = Model(inputs=inputs, outputs=out)
-        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-        #model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+        model.compile(loss='binary_crossentropy', optimizer=SGD, metrics=['accuracy'])
+                #model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
     
     def prepare_input(self,x):
