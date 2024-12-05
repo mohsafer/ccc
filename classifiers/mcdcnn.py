@@ -32,7 +32,8 @@ class MCDCNN:
         x = self.connected(x)
         out = self.classifier(x)
         model = Model(inputs=inputs, outputs=out)
-        model.compile(loss='sparse_categorical_crossentropy', optimizer=SGD(lr=0.01,momentum=0.9,decay=0.0005), metrics=['accuracy'])
+        #model.compile(loss='sparse_categorical_crossentropy', optimizer=SGD(lr=0.01,momentum=0.9,decay=0.0005), metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
     
     def prepare_input(self,x):
