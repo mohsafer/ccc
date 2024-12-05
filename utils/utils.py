@@ -81,9 +81,9 @@ def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None
                        columns=['precision', 'accuracy', 'recall', 'duration', 'accuracy_val'])
 
     # Compute metrics
-    res['precision'] = precision_score(y_true, y_pred, average='macro')
+    res['precision'] = precision_score(y_true, y_pred, average='macro', zero_division=0)
     res['accuracy'] = accuracy_score(y_true, y_pred)
-    res['recall'] = recall_score(y_true, y_pred, average='macro')
+    res['recall'] = recall_score(y_true, y_pred, average='macro', zero_division=0)
     res['duration'] = duration
 
     # Validation accuracy (if available)
