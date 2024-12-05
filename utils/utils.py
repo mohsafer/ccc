@@ -113,17 +113,18 @@ def plot(history, model):
     epochs = range(1, len(train_loss) + 1)
 
     # Plot training and validation loss
-   # plt.plot(epochs, val_loss, label='Val Loss', color='blue')
-    #plt.plot(epochs, train_loss, label='Train Loss', color='green')
+   plt.plot(epochs, val_loss, label='Val Loss', color='blue')
+    plt.plot(epochs, train_loss, label='Train Loss', color='green')
     
     # Plot training and validation accuracy
-    #plt.plot(epochs, val_acc, label='Val Acc', color='orange')
-   # plt.plot(epochs, train_acc, label='Train Acc', color='red')
+    plt.plot(epochs, val_acc, label='Val Acc', color='orange')
+    plt.plot(epochs, train_acc, label='Train Acc', color='red')
+    
     # Plot training and validation loss with markers and line styles
-    plt.plot(epochs, val_loss, label='Val Loss', color='blue', linestyle='-', marker='o')  # Solid line with circles
-    plt.plot(epochs, train_loss, label='Train Loss', color='green', linestyle='--', marker='x')  # Dashed line with x
-    plt.plot(epochs, val_acc, label='Val Acc', color='orange', linestyle='-.', marker='s')  # Dash-dot line with squares
-    plt.plot(epochs, train_acc, label='Train Acc', color='red', linestyle=':', marker='d')  # Dotted line with diamonds
+    # plt.plot(epochs, val_loss, label='Val Loss', color='blue', linestyle='-', marker='o')  # Solid line with circles
+    # plt.plot(epochs, train_loss, label='Train Loss', color='green', linestyle='--', marker='x')  # Dashed line with x
+    # plt.plot(epochs, val_acc, label='Val Acc', color='orange', linestyle='-.', marker='s')  # Dash-dot line with squares
+    # plt.plot(epochs, train_acc, label='Train Acc', color='red', linestyle=':', marker='d')  # Dotted line with diamonds
     
     # Add labels, legend, and title
     plt.xlabel('Epoch')
