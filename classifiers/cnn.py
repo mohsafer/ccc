@@ -21,4 +21,5 @@ class CNN:
         out = self.out(flatten)
         model = Model(inputs=self.input, outputs=out)
         model.compile(loss='mean_squared_error', optimizer=Adam(), metrics=['accuracy'])
+
         return model
