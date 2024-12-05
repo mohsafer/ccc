@@ -1,7 +1,7 @@
 # Multi Channel-Deep Convolutional Neural Network
 from tensorflow.keras.layers import Input, Dense, Concatenate, Conv1D, MaxPooling1D, Flatten
 from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import Adam
 
 class MCDCNN:
     def __init__(self, input_shape, num_classes):
