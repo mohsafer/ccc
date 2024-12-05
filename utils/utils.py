@@ -8,6 +8,7 @@ from sklearn.utils import shuffle
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
 from sklearn.metrics import classification_report
 
 def load_dataset(dataset_path, sub_path):
@@ -78,13 +79,14 @@ import numpy as np
 
 def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
     # Initialize the results DataFrame
-    res = pd.DataFrame(data=np.zeros((1, 5), dtype=float), 
-                       columns=['precision', 'accuracy', 'recall', 'duration', 'accuracy_val'])
+    res = pd.DataFrame(data=np.zeros((1, 6), dtype=float), 
+                       columns=['precision', 'accuracy', 'recall','f1_score', 'duration', 'accuracy_val'])
 
     # Compute metrics
     res['precision'] = precision_score(y_true, y_pred, average='macro', zero_division=0)
     res['accuracy'] = accuracy_score(y_true, y_pred)
     res['recall'] = recall_score(y_true, y_pred, average='macro', zero_division=0)
+    res['f1_score'] = f1_score(y_true, y_pred, average='macro', zero_division=0)
     res['duration'] = duration
 
     # Validation accuracy (if available)
