@@ -58,7 +58,7 @@ def load_data(path, ratio, norm=False):
 
 
 def calculate_metrics(y_true, y_pred, duration, y_true_val=None, y_pred_val=None):
-    res = pd.DataFrame(data=np.zeros((1, 4), dtype=np.float), index=[0],
+    res = pd.DataFrame(data=np.zeros((1, 4), dtype=float), index=[0], # np.float to float
                        columns=['precision', 'accuracy', 'recall', 'duration'])
     res['precision'] = precision_score(y_true, y_pred, average='macro')
     res['accuracy'] = accuracy_score(y_true, y_pred)
