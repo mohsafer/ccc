@@ -103,7 +103,7 @@ def plot(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.show()
     """
-def plot(history):
+def plot(history, y_test, predictions, model):
     # Extract data from history
     train_loss = history.history['loss']
     val_loss = history.history['val_loss']
@@ -126,7 +126,7 @@ def plot(history):
     plt.ylim(0, 1)  # Adjust the y-axis limits if necessary
     plt.show()
 
-    #model.summary()
+    model.summary()
 
     report = classification_report(np.argmax(y_test, axis=1), predictions)
     print(report)
