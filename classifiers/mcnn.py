@@ -277,7 +277,7 @@ class Classifier_MCNN:
                                           # minibatche before checking the network
                                           # on the validation set; in this case we
                                           # check every epoch
-            max_before_stopping = 500
+            max_before_stopping = 50
 
             best_iter = 0
             valid_loss = 0.
