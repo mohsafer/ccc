@@ -124,3 +124,8 @@ def plot(history):
     plt.legend()
     plt.ylim(0, 1)  # Adjust the y-axis limits if necessary
     plt.show()
+
+    model.summary()
+
+    report = classification_report(np.argmax(y_test, axis=1), predictions)
+    print(report)
