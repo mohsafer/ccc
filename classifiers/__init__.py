@@ -1,1 +1,1 @@
-__all__ = ["cnn", "encoder", "fcn", "inception", "mcdcnn", "mcnn", "mlp", "resnet", "tlenet", "twiesn"]
+__all__ = ["rnn", "cnn", "encoder", "fcn", "inception", "mcdcnn", "mcnn", "mlp", "resnet", "tlenet", "twiesn"]
